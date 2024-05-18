@@ -33,8 +33,8 @@ const (
 )
 
 type Card struct {
-	suit  CardType
-	value CardValue
+	Suit  CardType
+	Value CardValue
 }
 
 func (card Card) GetName() string{
