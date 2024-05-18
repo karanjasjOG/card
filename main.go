@@ -38,10 +38,10 @@ type Card struct {
 }
 
 func (card Card) GetName() string{
-	if card.suit == Jokers{
+	if card.Suit == Jokers{
 		return Suit_name[Jokers]
 	}else{
-		return Value_name[card.value] + " Of " +  Suit_name[card.suit] 
+		return Value_name[card.Value] + " Of " +  Suit_name[card.Suit] 
 	}
 }
 
@@ -161,13 +161,13 @@ func New(option ...Option) [][]Card {
 		for _, value := range valueOrder {
 			if suit == Jokers {
 				deck = append(deck, Card{
-					suit: Jokers,
+					Suit: Jokers,
 				})
 				break
 			}
 			var card Card = Card{
-				suit:  suit,
-				value: value,
+				Suit:  suit,
+				Value: value,
 			}
 			deck = append(deck, card)
 		}
