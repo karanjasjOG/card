@@ -41,7 +41,7 @@ func (card Card) GetName() string{
 	if card.suit == Jokers{
 		return Suit_name[Jokers]
 	}else{
-		return Suit_name[card.suit] + "Of" + Value_name[card.value]
+		return Value_name[card.value] + " Of " +  Suit_name[card.suit] 
 	}
 }
 
