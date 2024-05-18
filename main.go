@@ -18,7 +18,7 @@ const (
 )
 
 const (
-	Ace CardValue = iota
+	Ace CardValue = 1 + iota
 	Two
 	Three
 	Four
@@ -36,6 +36,38 @@ const (
 type Card struct {
 	suit  CardType
 	value CardValue
+}
+
+func (card Card) GetName() string{
+	if card.suit == Jokers{
+		return Suit_name[Jokers]
+	}else{
+		return Suit_name[card.suit] + "Of" + Value_name[card.value]
+	}
+}
+
+var Suit_name = map[CardType]string{
+	Spades: "Spades",
+	Diamonds: "Diamonds",
+	Clubs: "Clubs",
+	Hearts: "Hearts",
+	Jokers: "Jokers",
+}
+
+var Value_name = map[CardValue]string{
+	Ace: "Ace",
+	Two: "Two",
+	Three: "Three",
+	Four: "Four",
+	Five: "Five",
+	Six: "Six",
+	Seven: "Seven",
+	Eight: "Eight",
+	Nine: "Nine",
+	Ten: "Ten",
+	Jack: "Jack",
+	Queen: "Queen",
+	King: "King",
 }
 
 type Options struct {
@@ -171,17 +203,3 @@ func shuffleDeck(deck *[]Card){
 	}
 	*deck = newDeck
 }
-
-func main() {
-	fmt.Println(New(NumberOfDecks(1),NumbersOfJokers(3),WhatToOmit([]int{1,2,3,4,5,6,7,8,9,10})))
-	test(struct{sort bool; shuffle bool; numberJokers int}{sort: true,shuffle: true, numberJokers: 2})
-}
-
-func test(a struct{
-	sort bool
-	shuffle bool
-	numberJokers int
-}){
-	println(a.sort,a.numberJokers)
-}
-
